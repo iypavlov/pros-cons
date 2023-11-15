@@ -1,4 +1,55 @@
 .root {
+  display: flex;
+  align-items: center;
+
   height: 80px;
   background: #fff;
+  margin-left: -120px;
+  padding: 0 10px;
+}
+
+.brand {
+  width: calc(120px - 10px);
+  font-size: 48px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.searchInput {
+  width: 250px;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid #ebebeb;
+
+  &:focus {
+    outline: 1px solid #dadada;
+  }
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100%;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #9cfd9b;
+  }
 }

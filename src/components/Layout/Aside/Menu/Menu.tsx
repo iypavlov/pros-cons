@@ -3,12 +3,13 @@ import { ReactComponent as HomeIcon } from './img/home.svg'
 import { ReactComponent as TicketsIcon } from './img/tickets.svg'
 import { Link } from 'react-router-dom'
 import styles from './Menu.module.scss'
+import { PAGES_CONFIG } from '../../../../constants/pages'
 
 export const Menu = () => {
   return (
     <div className={styles.root}>
-      {ITEMS.map(({ to, icon }) => (
-        <Link key={to} to={to} className={styles.item}>
+      {ITEMS.map(({ to, icon, label }) => (
+        <Link key={to} to={to} className={styles.item} title={label}>
           {icon}
         </Link>
       ))}
@@ -18,11 +19,13 @@ export const Menu = () => {
 
 const ITEMS = [
   {
-    to: '/',
+    label: 'Главная',
+    to: PAGES_CONFIG.home.path,
     icon: <HomeIcon />,
   },
   {
-    to: '/tickets',
+    label: 'Тикеты',
+    to: PAGES_CONFIG.tickets.path,
     icon: <TicketsIcon />,
   },
 ]
