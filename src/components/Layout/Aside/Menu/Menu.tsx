@@ -8,7 +8,7 @@ import { PAGES_CONFIG } from '../../../../constants/pages'
 export const Menu = () => {
   return (
     <div className={styles.root}>
-      {ITEMS.map(({ to, icon, label }) => (
+      {ITEMS.map(({ label, to, icon }) => (
         <Link key={to} to={to} className={styles.item} title={label}>
           {icon}
         </Link>
