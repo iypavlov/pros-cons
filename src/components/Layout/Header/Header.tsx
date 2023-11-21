@@ -1,20 +1,20 @@
-import React from 'react'
-import styles from './Header.module.scss'
-import { Link, useLocation } from 'react-router-dom'
-import { PAGES_CONFIG } from '../../../constants/pages'
-import { ReactComponent as AddIcon } from './img/add.svg'
-import { ReactComponent as SearchIcon } from './img/search.svg'
+import React from 'react';
+import styles from './Header.module.scss';
+import { Link, useLocation } from 'react-router-dom';
+import { PAGES_CONFIG } from '../../../constants/pages';
+import { ReactComponent as AddIcon } from './img/add.svg';
+import { ReactComponent as SearchIcon } from './img/search.svg';
 
 export const Header = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <div className={styles.root}>
-      <div className={styles.brand}>ПиМ</div>
+      <div className={styles.brand}>ПМ</div>
       {location.pathname === PAGES_CONFIG.tickets.path && (
         <>
           <div className={styles.actions}>
-            <Link to={'#'} className={styles.action}>
+            <Link to={PAGES_CONFIG.createTicket.path} className={styles.action}>
               <AddIcon />
             </Link>
           </div>
@@ -25,5 +25,5 @@ export const Header = () => {
         </>
       )}
     </div>
-  )
-}
+  );
+};

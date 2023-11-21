@@ -1,12 +1,12 @@
-import React from 'react'
-import { Aside } from './Aside/Aside'
-import { Content } from './Content/Content'
-import styles from './Layout.module.scss'
-import { Header } from './Header/Header'
-import { Outlet } from 'react-router-dom'
+import React from 'react';
+import { Aside } from './Aside/Aside';
+import { Content } from './Content/Content';
+import styles from './Layout.module.scss';
+import { Header } from './Header/Header';
+import { Outlet } from 'react-router-dom';
 
 interface LayoutProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -20,5 +20,5 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         </Content>
       </div>
     </div>
-  )
-}
+  );
+};

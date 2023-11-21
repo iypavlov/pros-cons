@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from './TicketsList.module.scss'
-import { Ticket } from './Ticket/Ticket'
+import React from 'react';
+import styles from './TicketsList.module.scss';
+import { Ticket } from './Ticket/Ticket';
 
 export const TicketsList = () => {
   return (
@@ -11,5 +11,5 @@ export const TicketsList = () => {
           <Ticket key={idx} text="Lorem ipsum dolor sit amet, consectetur." />
         ))}
     </div>
-  )
-}
+  );
+};

@@ -1,9 +1,9 @@
-import React from 'react'
-import { ReactComponent as HomeIcon } from './img/home.svg'
-import { ReactComponent as TicketsIcon } from './img/tickets.svg'
-import { Link } from 'react-router-dom'
-import styles from './Menu.module.scss'
-import { PAGES_CONFIG } from '../../../../constants/pages'
+import React from 'react';
+import { ReactComponent as HomeIcon } from './img/home.svg';
+import { ReactComponent as TicketsIcon } from './img/tickets.svg';
+import { Link } from 'react-router-dom';
+import styles from './Menu.module.scss';
+import { PAGES_CONFIG } from '../../../../constants/pages';
 
 export const Menu = () => {
   return (
@@ -14,8 +14,8 @@ export const Menu = () => {
         </Link>
       ))}
     </div>
-  )
-}
+  );
+};
 
 const ITEMS = [
   {
@@ -28,4 +28,4 @@ const ITEMS = [
     to: PAGES_CONFIG.tickets.path,
     icon: <TicketsIcon />,
   },
-]
+];
