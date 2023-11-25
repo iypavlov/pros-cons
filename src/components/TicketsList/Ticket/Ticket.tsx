@@ -3,13 +3,14 @@ import styles from './Ticket.module.scss';
 import { Link } from 'react-router-dom';
 
 interface TicketProps {
-  text: string;
+  id: string;
+  title: string;
 }
 
-export const Ticket: React.FC<TicketProps> = ({ text }) => {
+export const Ticket: React.FC<TicketProps> = ({ id, title }) => {
   return (
-    <Link to={'#'} className={styles.root}>
-      {text}
+    <Link to={`/ticket/${id}`} className={styles.root}>
+      {title}
     </Link>
   );
 };

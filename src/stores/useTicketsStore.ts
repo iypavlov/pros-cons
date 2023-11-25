@@ -1,15 +1,21 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { TicketData } from '../types/tickets';
+
+interface TicketsStore {
+  tickets: TicketData[];
+  addTicket: (ticket: TicketData) => void;
+}
 
 export const useTicketsStore = create(
-  persist(
+  persist<TicketsStore>(
     (set, get) => ({
       tickets: [],
-      addTicket: (ticket: any) =>
-        set((state: any) => ({ tickets: [...state.tickets, ticket] })),
+      addTicket: (ticket) =>
+        set((state) => ({ tickets: [...state.tickets, ticket] })),
     }),
     {
-      name: 'test', // name of the item in the storage (must be unique)
+      name: 'tickets',
       version: 1,
     }
   )
