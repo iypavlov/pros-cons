@@ -1,0 +1,49 @@
+@import 'src/assets/styles/mixins';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-size: 34px;
+  text-align: center;
+}
+
+.columns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+
+  @include card;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.input {
+  width: 100%;
+  text-align: center;
+}

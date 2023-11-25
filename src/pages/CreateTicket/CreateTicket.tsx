@@ -13,6 +13,13 @@ export const CreateTicket = () => {
   const [title, setTitle] = useState('');
   const [addTicket] = useTicketsStore(useShallow((state) => [state.addTicket]));
 
+  const onCreate = () => {
+    if (!title.trim().length) return;
+
+    addTicket({ id: nanoid(), title, cons: [], pros: [] });
+    navigate(PAGES_CONFIG.tickets.path);
+  };
+
   return (
     <div>
       <div className={styles.card}>
@@ -22,14 +29,7 @@ export const CreateTicket = () => {
           value={title}
           onChange={(value) => setTitle(value)}
         />
-        <Button
-          onClick={() => {
-            addTicket({ id: nanoid(), title });
-            navigate(PAGES_CONFIG.tickets.path);
-          }}
-        >
-          Создать
-        </Button>
+        <Button onClick={onCreate}>Создать</Button>
       </div>
     </div>
   );

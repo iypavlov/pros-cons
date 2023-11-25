@@ -6,7 +6,7 @@ export const PAGES_CONFIG = {
     path: '/tickets',
   },
   ticket: {
-    path: '/ticket/:id',
+    path: '/tickets/:id',
   },
   createTicket: {
     path: '/create-ticket',
