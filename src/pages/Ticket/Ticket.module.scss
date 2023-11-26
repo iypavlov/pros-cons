@@ -29,6 +29,9 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   width: 100%;
 
   @include card;
@@ -46,4 +49,27 @@
 .input {
   width: 100%;
   text-align: center;
+}
+
+.prosOrCons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 12px;
+  min-height: 40px;
+  border-radius: 8px;
+  background: #eff4fa;
+}
+
+.remove {
+  cursor: pointer;
+  user-select: none;
+}
+
+.prosBtn {
+  background: #60ebb2;
+}
+
+.consBtn {
+  background: #f77373;
 }
