@@ -1,9 +1,33 @@
 @import 'src/assets/styles/mixins';
 
 .root {
+  position: relative;
+}
+
+.link {
   display: flex;
   align-items: center;
   justify-content: center;
 
   @include card;
+}
+
+.delete {
+  cursor: pointer;
+  position: absolute;
+  right: 4px;
+  top: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 0 3px #c7c7c7;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #ff9b9b;
+  }
 }

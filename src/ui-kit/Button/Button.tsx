@@ -1,5 +1,5 @@
-import React from 'react';
 import cn from 'classnames';
+import React from 'react';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
@@ -14,8 +14,8 @@ export const Button: React.FC<ButtonProps> = ({
   className,
 }) => {
   return (
-    <div className={cn(styles.root, className)} onClick={onClick}>
+    <button className={cn(styles.root, className)} onClick={onClick}>
       {children}
-    </div>
+    </button>
   );
 };
