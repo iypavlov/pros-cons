@@ -7,4 +7,8 @@
   &:focus {
     outline: 1px solid rgba(171, 171, 171, 0.44);
   }
+
+  &::placeholder {
+    opacity: 0.3;
+  }
 }

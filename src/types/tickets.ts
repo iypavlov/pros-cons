@@ -1,6 +1,8 @@
 export interface TicketProsCons {
   id: string;
-  value: string;
+  type: 'pros' | 'cons';
+  title: string;
+  value: number;
 }
 
 export interface TicketData {

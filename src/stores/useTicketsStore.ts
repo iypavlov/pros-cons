@@ -1,16 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { TicketData } from '../types/tickets';
+import { TicketData, TicketProsCons } from '../types/tickets';
 
 interface TicketsStore {
   tickets: TicketData[];
   addTicket: (ticket: TicketData) => void;
   getById: (id: string) => TicketData | undefined;
   deleteById: (id: string) => void;
-  updateTicket: (
-    id: string,
-    data: { id: string; type: 'pros' | 'cons'; value: string }
-  ) => void;
+  updateTicket: (id: string, data: TicketProsCons) => void;
   removeProsOrCons: (
     ticketId: string,
     prosOrConsId: string,
@@ -33,7 +30,7 @@ export const useTicketsStore = create(
         set((state) => ({
           tickets: state.tickets.map((ticket) => {
             if (ticket.id === id) {
-              ticket[data.type].push({ id: data.id, value: data.value });
+              ticket[data.type].push(data);
             }
 
             return ticket;

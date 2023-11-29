@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom';
 import { useTicketsStore } from '../../stores/useTicketsStore';
 import { Button } from '../../ui-kit/Button/Button';
 import { Input } from '../../ui-kit/Input/Input';
+import { ReactComponent as CloseIcon } from './img/close.svg';
 import styles from './Ticket.module.scss';
 
 export const Ticket = () => {
   const { id } = useParams();
-  const [value, setValue] = useState('');
+  const [title, setTitle] = useState('');
   const [getById, updateTicket, removeProsOrCons] = useTicketsStore((state) => [
     state.getById,
     state.updateTicket,
@@ -18,11 +19,11 @@ export const Ticket = () => {
   const ticket = id && getById(id);
 
   const onAdd = (type: 'pros' | 'cons') => {
-    if (!id || !value.trim().length) return;
+    if (!id || !title.trim().length) return;
 
-    updateTicket(id, { id: nanoid(), type, value });
+    updateTicket(id, { id: nanoid(), type, title, value: 0 }); // @TODO: Добавить велью
 
-    setValue('');
+    setTitle('');
   };
 
   if (!ticket) return null; // @TODO: Сообщить что тикет не найденю.
@@ -32,15 +33,16 @@ export const Ticket = () => {
       <h2 className={styles.title}>{ticket.title}</h2>
       <div className={styles.controls}>
         <Button className={styles.prosBtn} onClick={() => onAdd('pros')}>
-          +
+          Плюс
         </Button>
         <Input
+          placeholder="Печатать тут..."
           className={styles.input}
-          value={value}
-          onChange={(value) => setValue(value)}
+          value={title}
+          onChange={(value) => setTitle(value)}
         />
         <Button className={styles.consBtn} onClick={() => onAdd('cons')}>
-          -
+          Минус
         </Button>
       </div>
       <div className={styles.columns}>
@@ -49,12 +51,12 @@ export const Ticket = () => {
           <div className={styles.card}>
             {ticket.pros.map((pros) => (
               <div key={pros.id} className={styles.prosOrCons}>
-                {pros.value}
+                {pros.title}
                 <div
                   className={styles.remove}
                   onClick={() => removeProsOrCons(id, pros.id, 'pros')}
                 >
-                  X
+                  <CloseIcon />
                 </div>
               </div>
             ))}
@@ -65,12 +67,12 @@ export const Ticket = () => {
           <div className={styles.card}>
             {ticket.cons.map((cons) => (
               <div key={cons.id} className={styles.prosOrCons}>
-                {cons.value}
+                {cons.title}
                 <div
                   className={styles.remove}
                   onClick={() => removeProsOrCons(id, cons.id, 'cons')}
                 >
-                  X
+                  <CloseIcon />
                 </div>
               </div>
             ))}

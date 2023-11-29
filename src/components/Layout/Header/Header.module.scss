@@ -1,18 +1,10 @@
 .root {
   display: flex;
   align-items: center;
-
   height: 80px;
   background: #fff;
-  margin-left: -120px;
-  padding: 0 10px;
-}
-
-.brand {
-  width: calc(120px - 10px);
-  font-size: 68px;
-  font-weight: 900;
-  flex-shrink: 0;
+  padding: 0 10px 0 120px;
+  z-index: 1;
 }
 
 .actions {
@@ -45,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 120px;
   height: 100%;
   transition: background 0.2s ease;
 

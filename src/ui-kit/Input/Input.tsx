@@ -1,18 +1,23 @@
+import cn from 'classnames';
 import React from 'react';
 import styles from './Input.module.scss';
-import cn from 'classnames';
 
 interface InputProps {
   className?: string;
   value?: string;
   onChange?: (value: string) => void;
+  placeholder?: string;
 }
 
-export const Input: React.FC<InputProps> = ({ className, value, onChange }) => {
+export const Input: React.FC<InputProps> = ({
+  className,
+  onChange,
+  ...restProps
+}) => {
   return (
     <input
+      {...restProps}
       className={cn(styles.root, className)}
-      value={value}
       onChange={(e) => onChange?.(e.target.value)}
     />
   );

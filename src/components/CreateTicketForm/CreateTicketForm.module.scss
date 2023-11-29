@@ -1,0 +1,19 @@
+@import 'src/assets/styles/mixins';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @include card;
+}
+
+.label {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
