@@ -2,4 +2,4 @@
 
 Плюсы и минусы – ваш онлайн-помощник в принятии взвешенных решений! Cайт предоставляет удобный и интуитивно понятный инструмент для анализа различных дилемм, помогая сделать верный выбор.
 
-![](https://github.com/iypavlov/pros-cons/edit/master/pac.gif)
+![pac](https://github.com/iypavlov/pros-cons/blob/master/pac.gif)
