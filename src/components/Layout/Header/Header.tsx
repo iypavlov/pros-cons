@@ -10,7 +10,11 @@ export const Header = () => {
   return (
     <div className={styles.root}>
       <div className={styles.actions}>
-        <Link to={PAGES_CONFIG.createTicket.path} className={styles.action}>
+        <Link
+          to={PAGES_CONFIG.createTicket.path}
+          className={styles.action}
+          title="Создать"
+        >
           <AddIcon />
         </Link>
       </div>
