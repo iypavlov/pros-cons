@@ -36,19 +36,34 @@
 .controls {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 4px;
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
+
+  @media screen and (min-width: 1124px) {
+    flex-wrap: nowrap;
+  }
 }
 
 .input {
   width: 100%;
   text-align: center;
+  order: -1;
+
+  @media screen and (min-width: 1124px) {
+    order: unset;
+  }
 }
 
 .prosBtn {
   background: #60ebb2;
+  margin-left: auto;
+
+  @media screen and (min-width: 1124px) {
+    margin-left: unset;
+  }
 }
 
 .consBtn {
