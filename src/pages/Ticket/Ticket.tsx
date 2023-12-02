@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useTicketsStore } from '../../stores/useTicketsStore';
 import { Button } from '../../ui-kit/Button/Button';
 import { Input } from '../../ui-kit/Input/Input';
-import { ReactComponent as CloseIcon } from './img/close.svg';
+import { ProsCons } from './ProsCons/ProsCons';
 import styles from './Ticket.module.scss';
 
 export const Ticket = () => {
@@ -21,7 +21,7 @@ export const Ticket = () => {
   const onAdd = (type: 'pros' | 'cons') => {
     if (!id || !title.trim().length) return;
 
-    updateTicket(id, { id: nanoid(), type, title, value: 0 }); // @TODO: Добавить велью
+    updateTicket(id, { id: nanoid(), type, title, weight: 0 }); // @TODO: Добавить велью
 
     setTitle('');
   };
@@ -47,36 +47,18 @@ export const Ticket = () => {
       </div>
       <div className={styles.columns}>
         <div className={styles.column}>
-          <h3>Плюсы</h3>
-          <div className={styles.card}>
-            {ticket.pros.map((pros) => (
-              <div key={pros.id} className={styles.prosOrCons}>
-                {pros.title}
-                <div
-                  className={styles.remove}
-                  onClick={() => removeProsOrCons(id, pros.id, 'pros')}
-                >
-                  <CloseIcon />
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProsCons
+            title="Плюсы"
+            prosOrCons={ticket.pros}
+            onRemoveClick={(prosId) => removeProsOrCons(id, prosId, 'pros')}
+          />
         </div>
         <div className={styles.column}>
-          <h3>Минусы</h3>
-          <div className={styles.card}>
-            {ticket.cons.map((cons) => (
-              <div key={cons.id} className={styles.prosOrCons}>
-                {cons.title}
-                <div
-                  className={styles.remove}
-                  onClick={() => removeProsOrCons(id, cons.id, 'cons')}
-                >
-                  <CloseIcon />
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProsCons
+            title="Минусы"
+            prosOrCons={ticket.cons}
+            onRemoveClick={(consId) => removeProsOrCons(id, consId, 'cons')}
+          />
         </div>
       </div>
     </div>

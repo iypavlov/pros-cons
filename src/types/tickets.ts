@@ -2,7 +2,7 @@ export interface TicketProsCons {
   id: string;
   type: 'pros' | 'cons';
   title: string;
-  value: number;
+  weight: number;
 }
 
 export interface TicketData {

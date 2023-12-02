@@ -1,7 +1,12 @@
 .root {
   position: fixed;
-  width: 120px;
+  width: 50px;
   height: 100%;
   background: #fff;
+  box-shadow: 0 0 5px #d1dae4;
   flex-shrink: 0;
+
+  @media screen and (min-width: 764px) {
+    width: 120px;
+  }
 }

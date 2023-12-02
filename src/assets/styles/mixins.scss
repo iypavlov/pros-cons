@@ -2,5 +2,9 @@
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 4px 16px 0 #d1dae4;
-  padding: 40px;
+  padding: 24px;
+
+  @media screen and (min-width: 764px) {
+    padding: 40px;
+  }
 }

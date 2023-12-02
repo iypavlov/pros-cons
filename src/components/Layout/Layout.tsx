@@ -1,15 +1,15 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { Aside } from './Aside/Aside';
 import { Content } from './Content/Content';
-import styles from './Layout.module.scss';
 import { Header } from './Header/Header';
-import { Outlet } from 'react-router-dom';
+import styles from './Layout.module.scss';
 
 interface LayoutProps {
   children?: React.ReactNode;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = () => {
   return (
     <div className={styles.root}>
       <Aside />

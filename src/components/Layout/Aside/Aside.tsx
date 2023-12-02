@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Aside.module.scss';
 import { Menu } from './Menu/Menu';
 

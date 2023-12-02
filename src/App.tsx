@@ -1,12 +1,11 @@
-import React from 'react';
-import './assets/styles/index.scss';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './assets/styles/index.scss';
 import { Layout } from './components/Layout/Layout';
-import { Tickets } from './pages/Tickets/Tickets';
-import { Home } from './pages/Home/Home';
 import { PAGES_CONFIG } from './constants/pages';
-import { Ticket } from './pages/Ticket/Ticket';
 import { CreateTicket } from './pages/CreateTicket/CreateTicket';
+import { Home } from './pages/Home/Home';
+import { Ticket } from './pages/Ticket/Ticket';
+import { Tickets } from './pages/Tickets/Tickets';
 
 const router = createBrowserRouter([
   {

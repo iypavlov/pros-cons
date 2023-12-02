@@ -14,10 +14,15 @@
 .columns {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   gap: 16px;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+
+  @media screen and (min-width: 1124px) {
+    flex-direction: row;
+  }
 }
 
 .column {
@@ -26,15 +31,6 @@
   align-items: center;
   gap: 14px;
   width: 100%;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-
-  @include card;
 }
 
 .controls {
@@ -49,21 +45,6 @@
 .input {
   width: 100%;
   text-align: center;
-}
-
-.prosOrCons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 12px;
-  min-height: 40px;
-  border-radius: 8px;
-  background: #eff4fa;
-}
-
-.remove {
-  cursor: pointer;
-  user-select: none;
 }
 
 .prosBtn {

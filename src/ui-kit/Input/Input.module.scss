@@ -2,11 +2,11 @@
   font-family: 'Fira Sans', sans-serif;
   height: 40px;
   border-radius: 8px;
-  border: 1px solid #b7b7b7;
+  border: 1px solid #d1dae4;
   padding: 0 10px;
 
   &:focus {
-    outline: 1px solid rgba(171, 171, 171, 0.44);
+    outline: 1px solid rgba(171, 171, 171, 0.2);
   }
 
   &::placeholder {
