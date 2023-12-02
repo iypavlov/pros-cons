@@ -2,17 +2,21 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { TicketData, TicketProsCons } from '../types/tickets';
 
+type ProsOrConsChangeType = (
+  ticketId: string,
+  prosOrConsId: string,
+  type: TicketProsCons['type'],
+  data?: Partial<TicketProsCons>
+) => void;
+
 interface TicketsStore {
   tickets: TicketData[];
   addTicket: (ticket: TicketData) => void;
   getById: (id: string) => TicketData | undefined;
   deleteById: (id: string) => void;
   updateTicket: (id: string, data: TicketProsCons) => void;
-  removeProsOrCons: (
-    ticketId: string,
-    prosOrConsId: string,
-    type: 'pros' | 'cons'
-  ) => void;
+  removeProsOrCons: ProsOrConsChangeType;
+  updateProsOrCons: ProsOrConsChangeType;
 }
 
 export const useTicketsStore = create(
@@ -43,6 +47,25 @@ export const useTicketsStore = create(
               ticket[type] = ticket[type].filter(
                 (prosOrCons) => prosOrCons.id !== prosOrConsId
               );
+            }
+
+            return ticket;
+          }),
+        })),
+      updateProsOrCons: (ticketId, prosOrConsId, type, data) =>
+        set((state) => ({
+          tickets: state.tickets.map((ticket) => {
+            if (ticket.id === ticketId) {
+              return {
+                ...ticket,
+                [type]: ticket[type].map((prosOrCons) => {
+                  if (prosOrCons.id === prosOrConsId) {
+                    return { ...prosOrCons, ...data };
+                  }
+
+                  return prosOrCons;
+                }),
+              };
             }
 
             return ticket;

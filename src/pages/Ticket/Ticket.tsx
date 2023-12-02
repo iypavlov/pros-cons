@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTicketsStore } from '../../stores/useTicketsStore';
+import { TicketProsCons } from '../../types/tickets';
 import { Button } from '../../ui-kit/Button/Button';
 import { Input } from '../../ui-kit/Input/Input';
 import { ProsCons } from './ProsCons/ProsCons';
@@ -10,15 +11,17 @@ import styles from './Ticket.module.scss';
 export const Ticket = () => {
   const { id } = useParams();
   const [title, setTitle] = useState('');
-  const [getById, updateTicket, removeProsOrCons] = useTicketsStore((state) => [
-    state.getById,
-    state.updateTicket,
-    state.removeProsOrCons,
-  ]);
+  const [getById, updateTicket, removeProsOrCons, updateProsOrCons] =
+    useTicketsStore((state) => [
+      state.getById,
+      state.updateTicket,
+      state.removeProsOrCons,
+      state.updateProsOrCons,
+    ]);
 
   const ticket = id && getById(id);
 
-  const onAdd = (type: 'pros' | 'cons') => {
+  const onAdd = (type: TicketProsCons['type']) => {
     if (!id || !title.trim().length) return;
 
     updateTicket(id, { id: nanoid(), type, title, weight: 0 }); // @TODO: Добавить велью
@@ -26,14 +29,14 @@ export const Ticket = () => {
     setTitle('');
   };
 
-  if (!ticket) return null; // @TODO: Сообщить что тикет не найденю.
+  if (!ticket) return null; // @TODO: Сообщить что тикет не найден.
 
   return (
     <div className={styles.root}>
       <h2 className={styles.title}>{ticket.title}</h2>
       <div className={styles.controls}>
-        <Button className={styles.prosBtn} onClick={() => onAdd('pros')}>
-          Плюс
+        <Button className={styles.consBtn} onClick={() => onAdd('cons')}>
+          Минус
         </Button>
         <Input
           placeholder="Печатать тут..."
@@ -41,23 +44,29 @@ export const Ticket = () => {
           value={title}
           onChange={(value) => setTitle(value)}
         />
-        <Button className={styles.consBtn} onClick={() => onAdd('cons')}>
-          Минус
+        <Button className={styles.prosBtn} onClick={() => onAdd('pros')}>
+          Плюс
         </Button>
       </div>
       <div className={styles.columns}>
         <div className={styles.column}>
           <ProsCons
-            title="Плюсы"
-            prosOrCons={ticket.pros}
-            onRemoveClick={(prosId) => removeProsOrCons(id, prosId, 'pros')}
+            title="Минусы"
+            prosOrCons={ticket.cons}
+            onRemoveClick={(consId) => removeProsOrCons(id, consId, 'cons')}
+            onChangeWeight={(consId, weight) =>
+              updateProsOrCons(id, consId, 'cons', { weight })
+            }
           />
         </div>
         <div className={styles.column}>
           <ProsCons
-            title="Минусы"
-            prosOrCons={ticket.cons}
-            onRemoveClick={(consId) => removeProsOrCons(id, consId, 'cons')}
+            title="Плюсы"
+            prosOrCons={ticket.pros}
+            onRemoveClick={(prosId) => removeProsOrCons(id, prosId, 'pros')}
+            onChangeWeight={(prosId, weight) =>
+              updateProsOrCons(id, prosId, 'pros', { weight })
+            }
           />
         </div>
       </div>
