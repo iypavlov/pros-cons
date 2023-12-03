@@ -10,11 +10,7 @@ export const Tickets = () => {
   return (
     <div>
       <TicketsList
-        tickets={
-          search
-            ? tickets.filter((ticket) => ticket.title.match(search))
-            : tickets
-        }
+        tickets={tickets.filter((ticket) => ticket.title.match(search))}
       />
     </div>
   );

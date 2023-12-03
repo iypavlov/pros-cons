@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShallow } from 'zustand/react/shallow';
 import { PAGES_CONFIG } from '../../constants/pages';
@@ -10,6 +10,7 @@ import styles from './CreateTicketForm.module.scss';
 
 export const CreateTicketForm = () => {
   const navigate = useNavigate();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [title, setTitle] = useState('');
   const [addTicket] = useTicketsStore(useShallow((state) => [state.addTicket]));
 
@@ -22,6 +23,12 @@ export const CreateTicketForm = () => {
     navigate(`${PAGES_CONFIG.tickets.path}/${id}`);
   };
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <form
       onSubmit={(e) => {
@@ -32,6 +39,7 @@ export const CreateTicketForm = () => {
     >
       <label className={styles.label}>Введите название</label>
       <Input
+        ref={inputRef}
         className={styles.name}
         value={title}
         onChange={(value) => setTitle(value)}

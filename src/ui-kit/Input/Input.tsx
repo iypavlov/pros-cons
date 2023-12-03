@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React from 'react';
+import { forwardRef } from 'react';
 import styles from './Input.module.scss';
 
 interface InputProps {
@@ -10,16 +10,16 @@ interface InputProps {
   placeholder?: string;
 }
 
-export const Input: React.FC<InputProps> = ({
-  className,
-  onChange,
-  ...restProps
-}) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(function (
+  { className, onChange, ...restProps },
+  ref
+) {
   return (
     <input
       {...restProps}
+      ref={ref}
       className={cn(styles.root, className)}
       onChange={(e) => onChange?.(e.target.value)}
     />
   );
-};
+});
