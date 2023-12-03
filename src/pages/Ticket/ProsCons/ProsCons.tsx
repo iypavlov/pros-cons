@@ -21,7 +21,7 @@ export const ProsCons: React.FC<ProsConsProps> = ({
   return (
     <>
       <h3 className={styles.title}>
-        {title} {percent && <div>{percent.toFixed(2)}%</div>}
+        {title} {Boolean(percent) && <div>{percent?.toFixed(2)}%</div>}
       </h3>
       <div className={styles.card}>
         {prosOrCons.map((data) => (
