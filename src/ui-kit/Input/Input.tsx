@@ -6,6 +6,7 @@ interface InputProps {
   className?: string;
   value?: string;
   onChange?: (value: string) => void;
+  onBlur?: () => void;
   placeholder?: string;
 }
 

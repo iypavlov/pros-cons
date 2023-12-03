@@ -32,16 +32,7 @@
 }
 
 .searchInput {
-  display: none;
   width: auto;
-  height: 40px;
-  padding: 0 10px;
-  border-radius: 8px;
-  border: 1px solid #ebebeb;
-
-  &:focus {
-    outline: 1px solid #dadada;
-  }
 
   @media screen and (min-width: 764px) {
     width: 250px;
@@ -59,4 +50,8 @@
   &:hover {
     background: #9cfd9b;
   }
+}
+
+.searchIcon {
+  cursor: pointer;
 }
