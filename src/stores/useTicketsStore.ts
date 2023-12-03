@@ -35,7 +35,7 @@ export const useTicketsStore = create(
               ticket[data.type].push(data);
             }
 
-            return ticket;
+            return { ...ticket };
           }),
         })),
       removeProsOrCons: (ticketId, prosOrConsId, type) =>
@@ -47,7 +47,7 @@ export const useTicketsStore = create(
               );
             }
 
-            return ticket;
+            return { ...ticket };
           }),
         })),
       updateProsOrCons: (ticketId, prosOrConsId, type, data) =>
@@ -66,7 +66,7 @@ export const useTicketsStore = create(
               };
             }
 
-            return ticket;
+            return { ...ticket };
           }),
         })),
     }),
