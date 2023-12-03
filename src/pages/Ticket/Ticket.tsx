@@ -1,30 +1,39 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTicketsStore } from '../../stores/useTicketsStore';
 import { TicketProsCons } from '../../types/tickets';
 import { Button } from '../../ui-kit/Button/Button';
 import { Input } from '../../ui-kit/Input/Input';
+import { getTicketProsConsPercent } from '../../utils/tickets';
 import { ProsCons } from './ProsCons/ProsCons';
 import styles from './Ticket.module.scss';
 
 export const Ticket = () => {
-  const { id } = useParams();
+  const { id = '' } = useParams();
   const [title, setTitle] = useState('');
-  const [getById, updateTicket, removeProsOrCons, updateProsOrCons] =
+  const [tickets, updateTicket, removeProsOrCons, updateProsOrCons] =
     useTicketsStore((state) => [
-      state.getById,
+      state.tickets,
       state.updateTicket,
       state.removeProsOrCons,
       state.updateProsOrCons,
     ]);
 
-  const ticket = id && getById(id);
+  const ticket = useMemo(
+    () => tickets.find((ticket) => ticket.id === id),
+    [id, tickets]
+  );
+
+  const prosConsPercentage = useMemo(
+    () => ticket && getTicketProsConsPercent(ticket),
+    [ticket]
+  );
 
   const onAdd = (type: TicketProsCons['type']) => {
     if (!id || !title.trim().length) return;
 
-    updateTicket(id, { id: nanoid(), type, title, weight: 0 }); // @TODO: Добавить велью
+    updateTicket(id, { id: nanoid(), type, title, weight: 1 });
 
     setTitle('');
   };
@@ -52,6 +61,7 @@ export const Ticket = () => {
         <div className={styles.column}>
           <ProsCons
             title="Минусы"
+            percent={prosConsPercentage?.consPercent}
             prosOrCons={ticket.cons}
             onRemoveClick={(consId) => removeProsOrCons(id, consId, 'cons')}
             onChangeWeight={(consId, weight) =>
@@ -62,6 +72,7 @@ export const Ticket = () => {
         <div className={styles.column}>
           <ProsCons
             title="Плюсы"
+            percent={prosConsPercentage?.prosPercent}
             prosOrCons={ticket.pros}
             onRemoveClick={(prosId) => removeProsOrCons(id, prosId, 'pros')}
             onChangeWeight={(prosId, weight) =>

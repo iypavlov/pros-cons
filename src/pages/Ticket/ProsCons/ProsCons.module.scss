@@ -10,6 +10,13 @@
   @include card;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
 .prosOrCons {
   display: flex;
   flex-direction: column-reverse;

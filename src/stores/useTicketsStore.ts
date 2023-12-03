@@ -12,7 +12,6 @@ type ProsOrConsChangeType = (
 interface TicketsStore {
   tickets: TicketData[];
   addTicket: (ticket: TicketData) => void;
-  getById: (id: string) => TicketData | undefined;
   deleteById: (id: string) => void;
   updateTicket: (id: string, data: TicketProsCons) => void;
   removeProsOrCons: ProsOrConsChangeType;
@@ -25,7 +24,6 @@ export const useTicketsStore = create(
       tickets: [],
       addTicket: (ticket) =>
         set((state) => ({ tickets: [...state.tickets, ticket] })),
-      getById: (id) => get().tickets.find((ticket) => ticket.id === id),
       deleteById: (id) =>
         set((state) => ({
           tickets: state.tickets.filter((ticket) => ticket.id !== id),

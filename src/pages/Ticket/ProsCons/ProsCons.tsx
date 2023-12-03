@@ -8,6 +8,7 @@ interface ProsConsProps {
   prosOrCons: TicketProsCons[];
   onRemoveClick: (id: string) => void;
   onChangeWeight: (id: string, weight: number) => void;
+  percent?: number;
 }
 
 export const ProsCons: React.FC<ProsConsProps> = ({
@@ -15,10 +16,13 @@ export const ProsCons: React.FC<ProsConsProps> = ({
   prosOrCons,
   onRemoveClick,
   onChangeWeight,
+  percent,
 }) => {
   return (
     <>
-      <h3>{title}</h3>
+      <h3 className={styles.title}>
+        {title} {percent && <div>{percent.toFixed(2)}%</div>}
+      </h3>
       <div className={styles.card}>
         {prosOrCons.map((data) => (
           <div key={data.id} className={styles.prosOrCons}>
@@ -28,7 +32,7 @@ export const ProsCons: React.FC<ProsConsProps> = ({
               <div className={styles.weight} title="Вес">
                 <span
                   onClick={() =>
-                    onChangeWeight(data.id, Math.max(0, data.weight - 1))
+                    onChangeWeight(data.id, Math.max(1, data.weight - 1))
                   }
                 >
                   -

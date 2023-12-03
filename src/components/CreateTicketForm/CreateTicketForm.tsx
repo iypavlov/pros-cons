@@ -19,7 +19,12 @@ export const CreateTicketForm = () => {
 
     const id = nanoid();
 
-    addTicket({ id, title, cons: [], pros: [] });
+    addTicket({
+      id,
+      title,
+      cons: [],
+      pros: [],
+    });
     navigate(`${PAGES_CONFIG.tickets.path}/${id}`);
   };
 
