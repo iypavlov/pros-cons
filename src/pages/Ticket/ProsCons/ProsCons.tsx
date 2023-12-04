@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import React from 'react';
 import { TicketProsCons } from '../../../types/tickets';
+import { getPercentColor } from '../../../utils/tickets';
 import { ReactComponent as CloseIcon } from './img/close.svg';
 import styles from './ProsCons.module.scss';
 
@@ -19,22 +20,16 @@ export const ProsCons: React.FC<ProsConsProps> = ({
   onChangeWeight,
   percent,
 }) => {
-  const getPercentColor = () => {
-    if (!percent) return '';
-    if (percent < 20) return PERCENT_COLORS.red;
-    if (percent < 50) return PERCENT_COLORS.orange;
-    if (percent < 80) return PERCENT_COLORS.lightGreen;
-
-    return PERCENT_COLORS.green;
-  };
-
   return (
     <>
       <h3 className={styles.title}>
         {title}{' '}
         {Boolean(percent) && (
           <div
-            className={cn(styles.percent, percent && styles[getPercentColor()])}
+            className={cn(
+              styles.percent,
+              percent && styles[getPercentColor(percent)]
+            )}
           >
             {percent?.toFixed(2)}%
           </div>
@@ -75,11 +70,4 @@ export const ProsCons: React.FC<ProsConsProps> = ({
       </div>
     </>
   );
-};
-
-const PERCENT_COLORS = {
-  red: 'red',
-  orange: 'orange',
-  lightGreen: 'lightGreen',
-  green: 'green',
 };

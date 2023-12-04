@@ -1,4 +1,5 @@
 import { TicketData } from '../types/tickets';
+import { PERCENT_COLORS } from '../constants/tickets';
 
 export const getTicketProsConsPercent = (ticket: TicketData) => {
   const prosCount = ticket.pros.length;
@@ -14,4 +15,13 @@ export const getTicketProsConsPercent = (ticket: TicketData) => {
     prosPercent,
     consPercent,
   };
+};
+
+export const getPercentColor = (percent: number) => {
+  if (!percent) return '';
+  if (percent < 20) return PERCENT_COLORS.red;
+  if (percent < 50) return PERCENT_COLORS.orange;
+  if (percent < 80) return PERCENT_COLORS.lightGreen;
+
+  return PERCENT_COLORS.green;
 };

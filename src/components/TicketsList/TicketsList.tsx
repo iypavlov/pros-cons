@@ -11,7 +11,7 @@ export const TicketsList: React.FC<TicketsListProps> = ({ tickets }) => {
   return (
     <div className={styles.root}>
       {tickets.map((ticket) => (
-        <Ticket key={ticket.id} {...ticket} />
+        <Ticket key={ticket.id} ticket={ticket} />
       ))}
     </div>
   );
