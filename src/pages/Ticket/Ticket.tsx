@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { NoTicketData } from '../../components/NoTicketData/NoTicketData';
 import { useTicketsStore } from '../../stores/useTicketsStore';
 import { TicketProsCons } from '../../types/tickets';
 import { Button } from '../../ui-kit/Button/Button';
@@ -38,7 +39,7 @@ export const Ticket = () => {
     setTitle('');
   };
 
-  if (!ticket) return null; // @TODO: Сообщить что тикет не найден.
+  if (!ticket) return <NoTicketData />;
 
   return (
     <div className={styles.root}>
