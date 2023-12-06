@@ -2,6 +2,7 @@
   "name": "pac",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://iypavlov.github.io/pros-cons",
   "dependencies": {
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "13.4.0",
@@ -24,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -46,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.1.0",
     "prettier": "3.1.0",
     "prettier-plugin-organize-imports": "3.2.4"
   }
