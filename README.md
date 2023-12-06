@@ -5,5 +5,6 @@
 различных дилемм, помогая сделать верный выбор.
 
 # Демо
-https://iypavlov.github.io/pros-cons/
+Github pages - https://iypavlov.github.io/pros-cons/
+
 ![](https://github.com/iypavlov/pros-cons/blob/master/demo.gif)
