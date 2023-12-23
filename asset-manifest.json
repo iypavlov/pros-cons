@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pros-cons/static/css/main.eb6559b2.css",
-    "main.js": "/pros-cons/static/js/main.a6a6012d.js",
+    "main.js": "/pros-cons/static/js/main.25b9184f.js",
     "static/media/home.svg": "/pros-cons/static/media/home.39600f4b46db6d96d545408dab1a711d.svg",
     "static/media/trash.svg": "/pros-cons/static/media/trash.02a914dffc10fda8aee29a5e006d0148.svg",
     "static/media/search.svg": "/pros-cons/static/media/search.90c7975e9ec77ef6dbf1079a16943215.svg",
@@ -10,10 +10,10 @@
     "static/media/add.svg": "/pros-cons/static/media/add.57c43307c4ada0d4868b96f7bca23366.svg",
     "static/media/tickets.svg": "/pros-cons/static/media/tickets.5c3a56376ae6fcbd0fafd68a003a53f3.svg",
     "main.eb6559b2.css.map": "/pros-cons/static/css/main.eb6559b2.css.map",
-    "main.a6a6012d.js.map": "/pros-cons/static/js/main.a6a6012d.js.map"
+    "main.25b9184f.js.map": "/pros-cons/static/js/main.25b9184f.js.map"
   },
   "entrypoints": [
     "static/css/main.eb6559b2.css",
-    "static/js/main.a6a6012d.js"
+    "static/js/main.25b9184f.js"
   ]
 }
